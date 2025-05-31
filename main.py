@@ -28,21 +28,16 @@ async def on_shutdown():
         print("Планировщик остановлен")
 
 async def main():
-    # Инициализация БД
     init_db()
 
-    # Создаем экземпляры бота и диспетчера
     bot = Bot(token=TOKEN)
     dp = Dispatcher()
 
-    # Регистрируем роутеры
     dp.include_router(user_private_router)
 
-    # Регистрируем обработчики запуска/остановки
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
 
-    # Удаляем pending updates и запускаем поллинг
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
