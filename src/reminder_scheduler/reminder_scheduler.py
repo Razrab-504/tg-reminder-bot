@@ -33,12 +33,12 @@ def schedule_all_reminders(bot: Bot, scheduler: AsyncIOScheduler):
         
         print(f"Запланировано напоминание id={reminder_id} на {remind_time}")
 
-        # Добавляем асинхронную задачу напрямую в планировщик
         scheduler.add_job(
             send_reminder,
             trigger="date",
             run_date=remind_time,
-            args=[bot, user_id, name, text],  # Передаем аргументы в функцию
+            args=[bot, user_id, name, text],
             id=f"reminder_{reminder_id}",
-            misfire_grace_time=60 * 60  # Даем 1 час на выполнение, если сервер упал
+            misfire_grace_time=60 * 60 
         )
+
