@@ -5,7 +5,7 @@ from src.BD.bd_for_users import init_db
 from src.handlers.user_privat import user_private_router
 from src.reminder_scheduler.reminder_scheduler import schedule_all_reminders
 
-TOKEN = "7716489344:AAHn_8r0CNi-TVB-UqGkvL5e46pt-V33tH0"
+TOKEN = "your_token"
 
 # Глобальный планировщик
 scheduler = AsyncIOScheduler()
